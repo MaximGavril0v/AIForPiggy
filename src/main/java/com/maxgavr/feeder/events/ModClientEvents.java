@@ -30,7 +30,7 @@ public class ModClientEvents{
         Entity entity = event.getEntity();
         if (entity instanceof AnimalEntity){
             AnimalEntity animal = (AnimalEntity) entity;
-            animal.goalSelector.addGoal(3, new AvoidEntityGoal(animal, PlayerEntity.class, 16.0F, 0.8D, 1.33D));
+            animal.goalSelector.addGoal(10, new AvoidEntityGoal(animal, PlayerEntity.class, 16.0F, 0.8D, 1.33D));
         }
     }
 
