@@ -1,6 +1,7 @@
 package com.maxgavr.feeder.events;
 
 import com.maxgavr.feeder.Feeder;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -21,15 +22,15 @@ public class ModClientEvents{
 
 
     @SubscribeEvent
-    public void onEntitySpawn(EntityJoinWorldEvent event){
-        if(event.getEntity() instanceof AnimalEntity) doTasksStuff((AnimalEntity) event.getEntity(), event);
+    public void avoidPlayer(EntityJoinWorldEvent event){
+        Entity entity = event.getEntity();
+        if (entity instanceof AnimalEntity){
+            AnimalEntity animal = (AnimalEntity) entity;
+            animal.goalSelector.addGoal(3, new net.minecraft.entity.ai.goal.AvoidEntityGoal(animal, PlayerEntity.class, 16.0F, 0.8D, 1.33D));
+        }
+
+
     }
-
-    private void doTasksStuff(AnimalEntity animal, Event event){
-
-        this.goalSelector.addGoal(3, new net.minecraft.entity.ai.goal.AvoidEntityGoal(animal, PlayerEntity.class, 16.0F, 0.8D, 1.33D));
-    }
-
 
 
 }
