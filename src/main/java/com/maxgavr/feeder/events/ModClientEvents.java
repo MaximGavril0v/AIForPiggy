@@ -14,11 +14,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.entity.ai.goal.GoalSelector;
 
-@Mod.EventBusSubscriber(modid = Feeder.MOD_ID,bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = Feeder.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ModClientEvents{
 
     private GoalSelector goalSelector;
-    private ModClientEvents.AvoidEntityGoal<PlayerEntity> field_213531_bB;
+
 
     @SubscribeEvent
     public void onEntitySpawn(EntityJoinWorldEvent event){
@@ -27,24 +27,12 @@ public class ModClientEvents{
 
     private void doTasksStuff(AnimalEntity animal, Event event){
 
-        this.goalSelector.addGoal(4, new net.minecraft.entity.ai.goal.AvoidEntityGoal(animal, PlayerEntity.class, 16.0F, 0.8D, 1.33D));
+        this.goalSelector.addGoal(3, new net.minecraft.entity.ai.goal.AvoidEntityGoal(animal, PlayerEntity.class, 16.0F, 0.8D, 1.33D));
     }
 
 
 
-
-
-    static class AvoidEntityGoal<T extends LivingEntity> extends net.minecraft.entity.ai.goal.AvoidEntityGoal<T> {
-        private final AnimalEntity animal;
-
-        public AvoidEntityGoal(AnimalEntity animalIn, Class<T> p_i50037_2_, float p_i50037_3_, double p_i50037_4_, double p_i50037_6_) {
-            super(animalIn, p_i50037_2_, p_i50037_3_, p_i50037_4_, p_i50037_6_, EntityPredicates.CAN_AI_TARGET::test);
-            this.animal = animalIn;
-        }
-
-
-        }
-    }
+}
 
 
 
