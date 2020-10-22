@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,14 +20,15 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-public class FeederBlock extends Block {
+public class FeederBlock extends Block  {
+
     public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL_0_3;
     public FeederBlock() {
         super(Block.Properties.create(Material.WOOD)
-                .hardnessAndResistance(2.5f, 2.5f)
-                .sound(SoundType.WOOD)
-                .harvestLevel(0)
-                .harvestTool(ToolType.AXE));
+        .hardnessAndResistance(2.5f, 2.5f)
+        .sound(SoundType.WOOD)
+        .harvestLevel(0)
+        .harvestTool(ToolType.AXE));
         this.setDefaultState(this.stateContainer.getBaseState().with(LEVEL, Integer.valueOf(0)));
     }
 
@@ -51,6 +53,10 @@ public class FeederBlock extends Block {
         }
         return ActionResultType.SUCCESS;
     }
+
+
+
+
 
     public void setWheatLevel(World worldIn, BlockPos pos, BlockState state, int level) {
         worldIn.setBlockState(pos, state.with(LEVEL, Integer.valueOf(MathHelper.clamp(level, 0, 3))), 2);

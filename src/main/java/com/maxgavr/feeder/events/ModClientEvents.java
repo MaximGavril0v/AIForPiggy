@@ -1,6 +1,7 @@
 package com.maxgavr.feeder.events;
 
 import com.maxgavr.feeder.Feeder;
+import com.maxgavr.feeder.entity.ai.goal.EatFromFeederGoal;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
@@ -29,22 +30,11 @@ public class ModClientEvents{
         if (entity instanceof PigEntity){
             PigEntity pig = (PigEntity) entity;
             pig.goalSelector.addGoal(2, new AvoidEntityGoal<>(pig, PlayerEntity.class, 16.0F, 0.8D, 1.33D));
+            pig.goalSelector.addGoal(10, new EatFromFeederGoal(pig, 1.0D, 12, 2));
         }
     }
 
-   @SubscribeEvent
-    public static void onSheepDamage(AttackEntityEvent event){
-       if(event.getEntityLiving().getHeldItemMainhand().getItem() == Items.WHEAT){
-           if(event.getTarget().isAlive()){
-               LivingEntity target = (LivingEntity) event.getTarget();
-               if (target instanceof SheepEntity){
-                   target.addPotionEffect(new EffectInstance(Effects.POISON, 10*20));
-                   target.setGlowing(true);
 
-               }
-           }
-       }
-   }
 
 
 }
