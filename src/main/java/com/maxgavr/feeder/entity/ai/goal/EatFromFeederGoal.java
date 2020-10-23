@@ -27,9 +27,7 @@ public class EatFromFeederGoal extends MoveToBlockGoal {
 
     public EatFromFeederGoal(PigEntity pigIn, double p_i50737_2_, int p_i50737_4_, int p_i50737_5_) {
         super(pigIn, p_i50737_2_, p_i50737_4_, p_i50737_5_);
-        this.field_203112_e = -2;
         this.pig = pigIn;
-        this.setMutexFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
     }
 
     public double getTargetDistanceSq() {
@@ -60,8 +58,9 @@ public class EatFromFeederGoal extends MoveToBlockGoal {
         if (net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(pig.world, pig)) {
             BlockState blockstate = pig.world.getBlockState(this.destinationBlock);
             if (blockstate.getBlock() == RegistryHandler.FEEDER_BLOCK.get()) {
+                blockstate.with(FeederBlock.LEVEL, Integer.valueOf(1));
                 pig.world.setBlockState(this.destinationBlock, blockstate.with(FeederBlock.LEVEL, Integer.valueOf(1)), 2);
-                pig.playSound(SoundEvents.ENTITY_FOX_EAT, 2.0F, 1.0F);
+                pig.playSound(SoundEvents.ENTITY_FOX_EAT, 3.0F, 1.0F);
             }
         }
     }
