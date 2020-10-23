@@ -60,9 +60,13 @@ public class EatFromFeederGoal extends MoveToBlockGoal {
             if (blockstate.getBlock() == RegistryHandler.FEEDER_BLOCK.get()) {
                 blockstate.with(FeederBlock.LEVEL, Integer.valueOf(1));
                 pig.world.setBlockState(this.destinationBlock, blockstate.with(FeederBlock.LEVEL, Integer.valueOf(1)), 2);
-                pig.playSound(SoundEvents.ENTITY_FOX_EAT, 3.0F, 1.0F);
+                pig.playSound(SoundEvents.ENTITY_FOX_EAT, 1.0F, 1.0F);
             }
         }
+    }
+
+    public void resetTask(){
+        super.resetTask();
     }
 
     public boolean shouldExecute() { return super.shouldExecute(); }
