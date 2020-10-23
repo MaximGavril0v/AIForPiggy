@@ -63,9 +63,6 @@ public class FeederBlock extends Block  {
         worldIn.updateComparatorOutputLevel(pos, this);
     }
 
-    public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
-        return blockState.get(LEVEL);
-    }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(LEVEL);
