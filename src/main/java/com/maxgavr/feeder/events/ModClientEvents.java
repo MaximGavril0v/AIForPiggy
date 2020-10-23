@@ -31,7 +31,7 @@ public class ModClientEvents{
         if (entity instanceof PigEntity){
             PigEntity pig = (PigEntity) entity;
             pig.goalSelector.addGoal(2, new AvoidEntityGoal<>(pig, PlayerEntity.class, 16.0F, 0.8D, 1.33D));
-            pig.goalSelector.addGoal(10, new EatFromFeederGoal(pig, 1.0D, 12, 2));
+            pig.goalSelector.addGoal(4, new EatFromFeederGoal(pig, 1.0D, 12, 2));
             pig.goalSelector.addGoal(5, new EatGrassGoal(pig));
         }
     }
