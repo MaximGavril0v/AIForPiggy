@@ -1,5 +1,8 @@
 {
   "variants": {
-    "": { "model": "feeder:block/feeder_block" }
+    "level=0": { "model": "feeder:block/feeder_block" },
+    "level=1": { "model": "feeder:block/feeder_level1"},
+    "level=2": { "model": "feeder:block/feeder_level2"},
+    "level=3": { "model": "feeder:block/feeder_level3"}
   }
 }

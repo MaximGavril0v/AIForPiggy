@@ -23,12 +23,12 @@ public class RegistryHandler {
     }
 
     // Items
-    public static final RegistryObject<Item> FEEDER = ITEMS.register("feeder", ItemBase::new);
+    //public static final RegistryObject<Item> FEEDER = ITEMS.register("feeder", ItemBase::new);
 
     // Blocks
-    public static final RegistryObject<Block> FEEDER_BLOCK = BLOCKS.register("feeder_block", FeederBlock::new);
+    public static final RegistryObject<Block> FEEDER = BLOCKS.register("feeder_block", FeederBlock::new);
 
     // Block Items
-    public static final RegistryObject<Item> FEEDER_BLOCK_ITEM = ITEMS.register("feeder_block", () -> new BlockItemBase(FEEDER_BLOCK.get()));
+    public static final RegistryObject<Item> FEEDER_ITEM = ITEMS.register("feeder_block", () -> new BlockItemBase(FEEDER.get()));
 
 }
